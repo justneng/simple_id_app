@@ -6,7 +6,14 @@ void main() {
   ));
 }
 
-class SimpleIdAppHome extends StatelessWidget {
+class SimpleIdAppHome extends StatefulWidget {
+  @override
+  State<SimpleIdAppHome> createState() => _SimpleIdAppHomeState();
+}
+
+class _SimpleIdAppHomeState extends State<SimpleIdAppHome> {
+  int level = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,6 +23,15 @@ class SimpleIdAppHome extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.grey[850],
         elevation: 0,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => {
+          setState(() => {
+            level +=1
+          })
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.grey[800],
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30, 40, 30, 0),
@@ -43,24 +59,21 @@ class SimpleIdAppHome extends StatelessWidget {
                   color: Colors.amberAccent,
                   letterSpacing: 2,
                   fontSize: 28,
-                  fontWeight: FontWeight.bold
-              ),
+                  fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 30),
-
             Text(
               'CURRENT LEVLE',
               style: TextStyle(color: Colors.grey, letterSpacing: 2),
             ),
             SizedBox(height: 10),
             Text(
-              '99',
+              '$level',
               style: TextStyle(
                   color: Colors.amberAccent,
                   letterSpacing: 2,
                   fontSize: 28,
-                  fontWeight: FontWeight.bold
-              ),
+                  fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 30),
             Row(
@@ -73,10 +86,7 @@ class SimpleIdAppHome extends StatelessWidget {
                 Text(
                   'morgan.a@vanderlindegang.com',
                   style: TextStyle(
-                    color: Colors.grey[400],
-                    fontSize: 18,
-                    letterSpacing: 1
-                  ),
+                      color: Colors.grey[400], fontSize: 18, letterSpacing: 1),
                 )
               ],
             )
